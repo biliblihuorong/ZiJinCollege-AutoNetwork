@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>moe.ning</groupId>
+    <artifactId>ZiJinCollege-AutoNetWork</artifactId>
+    <version>v0.0.1</version>
+
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- GraalVM Native Image Plugin -->
+            <plugin>
+                <groupId>org.graalvm.nativeimage</groupId>
+                <artifactId>native-image-maven-plugin</artifactId>
+                <version>21.2.0</version> <!-- 根据你的GraalVM版本选择 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>native-image</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 主类 -->
+                    <mainClass>moe.ning.Main</mainClass>
+                    <!-- 编译静态二进制 -->
+                    <buildArgs>
+                        <arg>-H:+AddAllCharsets</arg>
+                        <arg>--no-fallback</arg> <!-- 禁用后备镜像 -->
+                        <buildArg>--report-unsupported-elements-at-runtime</buildArg>
+                        <buildArg>--enable-https</buildArg>
+                        <buildArg>--enable-http</buildArg>
+<!--                        <buildArg>&#45;&#45;initialize-at-run-time</buildArg>-->
+<!--                        <buildArg>&#45;&#45;shared</buildArg>-->
+                    </buildArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
