@@ -18,7 +18,7 @@
 
 #### 第一步：下载程序
 
-1. 前往 [Releases](#) 页面。
+1. 前往 [Releases](https://github.com/biliblihuorong/ZiJin-College-network/releases) 页面。
 2. 下载适用于您操作系统版本的 `.exe` 文件。
 
 #### 第二步：创建配置文件
